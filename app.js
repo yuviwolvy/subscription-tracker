@@ -1,9 +1,16 @@
 // Import the express module to create a server
 import express from "express";
 import { PORT } from "./config/env.js";
+import userRouter from "./routes/user.routes.js";
+import authRouter from "./routes/auth.routes.js";
+import subscriptionRouter from "./routes/subscription.routes.js";
 
 // Create an Express application instance
 const app = express();
+
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/users", userRouter);
+app.use("/api/v1/subscriptions", subscriptionRouter);
 
 // Define a GET route for the root URL ("/")
 // When someone visits http://localhost:3000/, this function will run
