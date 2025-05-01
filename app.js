@@ -4,6 +4,7 @@ import { PORT } from "./config/env.js";
 import userRouter from "./routes/user.routes.js";
 import authRouter from "./routes/auth.routes.js";
 import subscriptionRouter from "./routes/subscription.routes.js";
+import connectToDatabase from "./database/mongodb.js";
 
 // Create an Express application instance
 const app = express();
@@ -21,8 +22,10 @@ app.get("/", (req, res) => {
 
 // Start the server and listen on port 3000
 // When the server starts successfully, log a message in the console
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
   console.log(`Subscription tracker running on http://localhost:${PORT}`);
+
+  await connectToDatabase();
 });
 
 // Export the app instance so it can be used in other files (e.g., for testing)
