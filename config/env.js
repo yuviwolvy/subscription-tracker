@@ -5,4 +5,5 @@ import { config } from "dotenv";
 // It determines which .env file (e.g., .env.development.local or .env.production.local) will be loaded.
 config({ path: `.env.${process.env.NODE_ENV || "development"}.local` });
 
-export const { PORT, NODE_ENV, DB_URI } = process.env;
+export const { PORT, NODE_ENV, DB_URI, JWT_SECRET, JWT_EXPIRES_IN } =
+  process.env;
